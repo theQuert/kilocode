@@ -110,6 +110,26 @@ export const FIELD_REGISTRY: Record<string, FieldMetadata> = {
 		isOptional: true,
 	},
 	// kilocode_change end
+
+	// kilocode_change start - Apertis fields
+	apertisApiKey: {
+		label: "API Key",
+		type: "password",
+		placeholder: "Enter Apertis API key...",
+	},
+	apertisModelId: {
+		label: "Model",
+		type: "text",
+		placeholder: "Enter model name...",
+	},
+	apertisBaseUrl: {
+		label: "Base URL",
+		type: "text",
+		placeholder: "Enter base URL (or leave empty for default)...",
+		isOptional: true,
+	},
+	// kilocode_change end
+
 	openRouterProviderDataCollection: {
 		label: "Provider Data Collection",
 		type: "select",
@@ -815,6 +835,13 @@ export const getProviderSettings = (provider: ProviderName, config: ProviderSett
 				createFieldConfig("zenmuxApiKey", config),
 				createFieldConfig("zenmuxModelId", config, "openai/gpt-5"),
 				createFieldConfig("zenmuxBaseUrl", config, "Default"),
+			]
+
+		case "apertis": // kilocode_change
+			return [
+				createFieldConfig("apertisApiKey", config),
+				createFieldConfig("apertisModelId", config, "claude-sonnet-4-20250514"),
+				createFieldConfig("apertisBaseUrl", config, "Default"),
 			]
 
 		case "openai-native":
