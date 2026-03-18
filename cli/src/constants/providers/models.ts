@@ -68,6 +68,7 @@ export type RouterName =
 	| "ovhcloud"
 	| "zenmux"
 	| "nano-gpt"
+	| "apertis" // kilocode_change
 
 /**
  * ModelInfo interface - mirrors the one from packages/types/src/model.ts
@@ -169,7 +170,7 @@ export const PROVIDER_TO_ROUTER_NAME: Record<ProviderName, RouterName | null> = 
 	synthetic: null,
 	"sap-ai-core": null,
 	baseten: null,
-	apertis: null, // kilocode_change
+	apertis: "apertis", // kilocode_change
 	corethink: null,
 }
 
@@ -471,6 +472,8 @@ export function getModelIdKey(provider: ProviderName): string {
 			return "ovhCloudAiEndpointsModelId"
 		case "zenmux":
 			return "zenmuxModelId"
+		case "apertis": // kilocode_change
+			return "apertisModelId"
 		case "nano-gpt":
 			return "nanoGptModelId"
 		default:

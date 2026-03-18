@@ -108,6 +108,8 @@ export function getModelIdForProvider(provider: ProviderConfig): string {
 			return provider.openRouterModelId || ""
 		case "zenmux":
 			return provider.zenmuxModelId || ""
+		case "apertis": // kilocode_change
+			return provider.apertisModelId || ""
 		case "ollama":
 			return provider.ollamaModelId || ""
 		case "lmstudio":

@@ -413,6 +413,16 @@ export const fakeAIProviderSchema = baseProviderSchema.extend({
 	fakeAi: z.unknown().optional(),
 })
 
+// kilocode_change start
+// Apertis provider
+export const apertisProviderSchema = baseProviderSchema.extend({
+	provider: z.literal("apertis"),
+	apertisModelId: z.string().optional(),
+	apertisApiKey: z.string().optional(),
+	apertisBaseUrl: z.string().optional(),
+})
+// kilocode_change end
+
 // Discriminated union of all provider configs
 export const providerConfigSchema = z.discriminatedUnion("provider", [
 	kilocodeProviderSchema,
@@ -459,6 +469,7 @@ export const providerConfigSchema = z.discriminatedUnion("provider", [
 	virtualQuotaFallbackProviderSchema,
 	humanRelayProviderSchema,
 	fakeAIProviderSchema,
+	apertisProviderSchema, // kilocode_change
 ])
 
 // Inferred types
@@ -506,6 +517,7 @@ export type SyntheticProviderConfig = z.infer<typeof syntheticProviderSchema>
 export type VirtualQuotaFallbackProviderConfig = z.infer<typeof virtualQuotaFallbackProviderSchema>
 export type HumanRelayProviderConfig = z.infer<typeof humanRelayProviderSchema>
 export type FakeAIProviderConfig = z.infer<typeof fakeAIProviderSchema>
+export type ApertisProviderConfig = z.infer<typeof apertisProviderSchema> // kilocode_change
 export type ProviderConfig = z.infer<typeof providerConfigSchema>
 
 // Type guards
